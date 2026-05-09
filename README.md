@@ -2,7 +2,7 @@
 
 1. Clonar a aplicação
 ```shell
-git clone https://github.com/digitalcollege-classes/landing-page
+git clone https://github.com/unifor-pos/crud-basico
 ```
 
 2. Entrar no diretório
@@ -14,13 +14,33 @@ cd landing-page
 ```shell
 make up
 ```
+ou
+```
+docker compose up -d
+```
 
 4. Instala as depedencias
 ```shell
 make composer_install
 ```
+ou
+```shell
+docker compose exec -T php bash -c "composer install"
+```
 
-Pronto, deve estar rodando em <http://localhost:8080/admin>
+5. Instala as deps do front (cypress)
+```shell
+npm install
+```
+
+
+
+Pronto, A app deve estar rodando em <http://localhost:8080/admin>
+
+> O Cypress precisa desse comando pra rodar
+```shell
+npx cypress open
+```
 
 ---
 
