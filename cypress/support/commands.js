@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('createAUser', () => {
+    cy.get('[data-cy="user-name"]').type('masqueico');
+    cy.get('[data-cy="user-address"]').type("Rua do Fim, 123");
+    cy.get('[data-cy="user-email"]').type("masqueico123@gmail.com");
+    cy.get('[data-cy="user-password"]').type("batata123");
+})
+
+Cypress.Commands.add('getByData', (selector) => {
+  return cy.get(`[data-cy=${selector}]`)
+})
