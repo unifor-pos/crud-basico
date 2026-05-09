@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('criarUsuario', (usuario) => {
+	const ts = Date.now() + Math.floor(Math.random() * 10000);
+	const dadosUsuario = usuario || {
+		nome: `Teste Cypress ${ts}`,
+		email: `teste.cypress.${ts}@mail.com`,
+		senha: 'Senha@123',
+	};
+
+	cy.get('input[name="nome"]').clear().type(dadosUsuario.nome);
+	cy.get('input[name="email"]').clear().type(dadosUsuario.email);
+	cy.get('input[name="senha"]').clear().type(dadosUsuario.senha);
+    cy.contains('button', 'Enviar').click();
+
+    cy.contains('Novo usuario cadastrado com sucesso!').should('be.visible');
+
+	return cy.wrap(dadosUsuario);
+});
