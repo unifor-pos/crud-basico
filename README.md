@@ -7,7 +7,7 @@ git clone https://github.com/unifor-pos/crud-basico
 
 2. Entrar no diretório
 ```shell
-cd landing-page
+cd crud-basico
 ```
 
 3. Subir o docker
