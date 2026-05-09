@@ -28,7 +28,18 @@ ou
 docker compose exec -T php bash -c "composer install"
 ```
 
-5. Instala as deps do front (cypress)
+5. Migrar o banco
+```shell
+make migrate 
+```
+
+ou
+
+```shell
+docker compose exec -T php bash -c "php commands/migrate-up.php"
+```
+
+6. Instala as deps do front (cypress)
 ```shell
 npm install
 ```
@@ -68,7 +79,7 @@ git push origin nome-da-nova-branch
 ```
 
 5. Abra o Pull Request
-Acesse <https://github.com/digitalcollege-classes/landing-page/pulls> e clique em "Compare & pull" para abrir o pull request
+Acesse <https://github.com/unifor-pos/crud-basico/pulls> e clique em "Compare & pull" para abrir o pull request
 
 6. Peça aos coleguinhas para revisar seu código
 
