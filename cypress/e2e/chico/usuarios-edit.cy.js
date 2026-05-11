@@ -1,6 +1,9 @@
 describe('Edicao de usuario', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:8080/admin/usuarios/editar?id=1');
+        cy.visit('/');
+        cy.contains('Usuários').click();
+        cy.contains('Listar usuários').click();
+        cy.get('[data-cy="editar-usuario"]').first().click();
     });
 
     it('preenche formulario de edicao com dados validos', () => {

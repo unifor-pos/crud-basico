@@ -1,6 +1,8 @@
 describe('Listagem de usuarios', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:8080/admin/usuarios/listar');
+        cy.visit('/');
+        cy.contains('Usuários').click();
+        cy.contains('Listar usuários').click();
     });
 
     it('exibe a tabela de usuarios', () => {

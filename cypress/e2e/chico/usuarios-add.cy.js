@@ -1,16 +1,19 @@
 describe('Cadastro de usuario', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:8080/admin/usuarios/cadastrar');
+        cy.visit('/');
+        cy.contains('Usuários').click();
+        cy.contains('Cadastrar usuário').click();
     });
 
     it('cadastra usuario com dados validos', () => {
-        const email = `usuario.${Date.now()}@email.com`;
+        cy.intercept('POST', '/admin/usuarios/cadastrar', 'Novo usuario cadastrado com sucesso!').as('cadastrarUsuario');
 
         cy.get('[data-cy="usuario-nome"]').type('Usuario Teste');
-        cy.get('[data-cy="usuario-email"]').type(email);
+        cy.get('[data-cy="usuario-email"]').type('usuario.teste@email.com');
         cy.get('[data-cy="usuario-senha"]').type('senha123');
         cy.get('[data-cy="usuario-submit"]').click();
 
+        cy.wait('@cadastrarUsuario');
         cy.contains('Novo usuario cadastrado com sucesso!').should('be.visible');
     });
 
