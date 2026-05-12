@@ -27,14 +27,13 @@ RUN docker-php-ext-install gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN groupadd -g 1000 developer
-RUN useradd -u 1000 -ms /bin/bash -g developer user
+RUN groupadd -g 1000 developer && \
+    useradd -u 1000 -g developer -m developer
 
-COPY --chown=user:developer . /var/www
+COPY --chown=developer:developer . /var/www
 
-USER user
+USER developer
 
 EXPOSE 9000
 
 CMD ["php-fpm"]
-
