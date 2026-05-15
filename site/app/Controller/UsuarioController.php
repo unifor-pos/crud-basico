@@ -26,6 +26,17 @@ class UsuarioController extends AbstractController
         echo "Novo usuario cadastrado com sucesso!";
     }
 
+    public function remove(): void
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            Usuario::delete((int)$id);
+            echo "Usuário excluido com sucesso!";
+        } else {
+            echo "ID não fornecido.";
+        }
+    }
+
     public function edit(): void
     {
         $this->view('usuarios/edit');

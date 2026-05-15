@@ -11,4 +11,10 @@ class Palestrante extends AbstractModel
     public string $nome;
     public string $email;
     public string $especialidade;
+
+    public static function delete(int $id): void
+    {
+        $sql = "DELETE FROM palestrantes WHERE id = :id";
+        parent::db()->prepare($sql)->execute([':id' => $id]);
+    }
 }
