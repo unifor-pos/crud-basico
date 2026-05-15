@@ -26,14 +26,12 @@ describe('Página de Cadastrar Usuário', () => {
         
         cy.get('[data-cy="btn-salvar"]').click();
         
-        // Verifica a mensagem de sucesso
         cy.contains('Novo usuario cadastrado com sucesso!').should('be.visible');
     });
 
     it('Não deve salvar usuário com todos os campos em branco', () => {
         cy.get('[data-cy="btn-salvar"]').click();
 
-        // Verifica se a mensagem de sucesso NÃO apareceu
         cy.contains('Novo usuario cadastrado com sucesso!').should('not.exist');
     });
 
