@@ -19,6 +19,7 @@ class MigrationV20260203_200101 implements MigrationInterface
             CREATE TABLE IF NOT EXISTS usuarios (
                  id int NOT NULL AUTO_INCREMENT,
                  nome varchar(100) NOT NULL,
+                 endereco varchar(255) NULL,
                  email varchar(255) NOT NULL,
                  senha varchar(255) NOT NULL,
                  PRIMARY KEY (id)

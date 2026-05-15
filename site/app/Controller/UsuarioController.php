@@ -17,12 +17,24 @@ class UsuarioController extends AbstractController
 
         $usuario = new Usuario();
         $usuario->nome = $_POST['nome'];
+        $usuario->endereco = $_POST['endereco'];
         $usuario->email = $_POST['email'];
         $usuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
         $usuario->insert();
 
         echo "Novo usuario cadastrado com sucesso!";
+    }
+
+    public function remove(): void
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            Usuario::delete((int)$id);
+            echo "Usuário excluido com sucesso!";
+        } else {
+            echo "ID não fornecido.";
+        }
     }
 
     public function edit(): void

@@ -13,6 +13,17 @@ class PalestranteController extends AbstractController
         $this->view('palestrantes/add');
     }
 
+    public function remove(): void
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            Palestrante::delete((int)$id);
+            echo "Palestrante excluido com sucesso!";
+        } else {
+            echo "ID não fornecido.";
+        }
+    }
+
     public function edit(): void
     {
                
