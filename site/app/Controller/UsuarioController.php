@@ -17,6 +17,7 @@ class UsuarioController extends AbstractController
 
         $usuario = new Usuario();
         $usuario->nome = $_POST['nome'];
+        $usuario->endereco = $_POST['endereco'];
         $usuario->email = $_POST['email'];
         $usuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
